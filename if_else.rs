@@ -12,7 +12,7 @@ fn main() {
   };
   println!("if condition is true value of y will be {:?}",y);
 
-  y = if false {
+  let y = if false {
     10
   } else {
     5
