@@ -1,3 +1,5 @@
+#![allow(unused_variables)]
+#![allow(dead_code)]
 fn description() {
   // every function that takes a reference as input or gives an reference as output
   //even though you won't mention lifetimes for every function compiler
@@ -9,7 +11,6 @@ struct Hello<'a> {
   hello: &'a str
 }
 
-#[allow(unused_variables)]
 fn main() {
   description();
   // lifetime 'static is static is always alive
@@ -22,7 +23,6 @@ fn main() {
   hello(&x);
 }
 
-#[allow(unused_variables)]
 fn hello (s: &str){
   let x: &'static i32 = &5;
   println!("hello");

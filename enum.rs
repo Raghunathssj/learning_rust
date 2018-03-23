@@ -1,3 +1,5 @@
+#![allow(unused_variables)]
+#![allow(dead_code)]
 fn description() {
   // enum is a type that represents data with several possible variants
   // it can resembles any kind of variants which has, which din't have data
@@ -7,8 +9,6 @@ fn description() {
   // each variant scope is only on its enum
 }
 
-#[allow(unused_variables)]
-#[allow(dead_code)]
 fn main() {
   description();
   enum Message {

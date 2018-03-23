@@ -1,3 +1,4 @@
+#![allow(unused_variables)]
 fn main() {
   // vector can only holds of same data types
   // declaring a vector with same type of numbers

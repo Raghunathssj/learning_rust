@@ -1,10 +1,11 @@
+#![allow(unused_variables)]
+#![allow(dead_code)]
+#![allow(unused_assignments)]
 fn description() {
   //In normal if you declare a variable you can not its value
   // but using mut (mutability) you can change the value
 }
 
-#[allow(unused_variables)]
-#[allow(unused_assignments)]
 fn main() {
   description();
   let x = "not mutable";
@@ -29,7 +30,6 @@ fn referncing_mut() {
   println!("{}",y);
 }
 
-#[allow(unused_variables)]
 fn reassigning_reference(){
   // but you can assign mutable refernce of y like this
   let mut x = 5;
@@ -37,7 +37,6 @@ fn reassigning_reference(){
   let z = &mut y;
 }
 
-#[allow(unused_variables)]
 fn mutating_immutable_variable(){
   // immutable in rust doesn't mean it can't be changed, it is because of exterior mutability
 
@@ -60,7 +59,6 @@ fn interior_mutability() {
     println!("{:?}", y);
 }
 
-#[allow(dead_code)]
 fn mutating_struct() {
   use std::cell::Cell;
   // in structs you can't put some variables as mutable and some are not

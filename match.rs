@@ -1,3 +1,5 @@
+#![allow(unused_variables)]
+#![allow(dead_code)]
 fn description() {
   //Match is similar to groups of if else cases
   //using this you can remove all if elses and use a simple syntax for match
@@ -29,8 +31,6 @@ fn main() {
   //different kind of patterns that can be used in match will be coverd in pattern.rs
 }
 
-#[allow(unused_variables)]
-#[allow(dead_code)]
 enum Message {
   Quit,
   ChangeColor(i32, i32, i32),
@@ -40,12 +40,8 @@ enum Message {
 
 fn quit() {  }
 
-#[allow(unused_variables)]
-#[allow(dead_code)]
 fn change_color(r: i32, g: i32, b: i32) {  }
 
-#[allow(unused_variables)]
-#[allow(dead_code)]
 fn move_cursor(x: i32, y: i32) {  }
 
 fn process_message(msg: Message) {
