@@ -37,6 +37,9 @@ fn strings() {
   s.push_str(" it");
   println!("{}", s);
   string_coercing();
+  string_indexing();
+  string_slicing();
+  string_concatenation();
 }
 
 fn string_coercing() {
@@ -49,5 +52,34 @@ fn string_coercing() {
   // TcpStream::connect("192.168.0.1:3000"); // Parameter is of type &str.
   // let addr_string = "192.168.0.1:3000".to_string();
   // TcpStream::connect(&*addr_string); // Convert `addr_string` to &str.
-  // the above function will take & str but you need to cast String usingV &*
+  // the above function will take & str but you need to cast String using &*
+}
+
+fn string_indexing() {
+  // Like in other languages you can't access string letters using [] or it can't be indexed using integer
+  // println!("The first letter of s is {}", "hello"[0]); // It will give error
+  // But you can access letters in string like this
+
+  let dog = "hello".chars().nth(0); // Its like "hello"[0]
+}
+
+fn string_slicing() {
+  let hello = "hello";
+  let string_slice = &hello[0..3];
+  println!("{}", string_slice);
+  // But it will fail in run time because strings are not character offcets those are byte offcets
+}
+
+fn string_concatenation() {
+  // you can concat string and literal string easily
+  let string = "string".to_string();
+  let concat = "concat";
+  let string_concat = string + concat;
+  println!("{}",string_concat);
+  // If you try to add two strings it will give error
+  // You can add two strings using & symbol like below
+  let string = "string".to_string();
+  let concat = "concat".to_string();
+  let string_concat = string + &concat;
+  println!("{}",string_concat);
 }
