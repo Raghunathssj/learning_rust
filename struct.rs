@@ -40,6 +40,7 @@ fn main() {
   unit_like_struct();
 }
 
+// #######################################
 fn mutate_struct(){
   // even though structs are immutable but you can do like this
   let name = "Ram";
@@ -52,6 +53,7 @@ fn mutate_struct(){
   println!("I am {} , {} years old , As a Programmer I like {} languages.Everyday I sleep for {} hrs.",ram.name(), ram.age(),ram.fav_lang,ram.sleeping_hrs);
 }
 
+// #######################################
 struct Point {
   x: i32,
   y: i32,
@@ -75,6 +77,7 @@ fn reference_mutate_struct() {
   println!("x is {} and y is {}", point.x,point.y);
 }
 
+// #######################################
 fn update_syntax_struct() {
   struct Point3d {
     x: i32,
@@ -91,6 +94,7 @@ fn update_syntax_struct() {
   println!("{} {} {}",another_point.x,another_point.y,another_point.z);
 }
 
+// #######################################
 fn tuple_struct() {
   struct Color (i32,i32,i32);
   struct Point (i32,i32,i32);
@@ -112,6 +116,7 @@ fn tuple_struct() {
   // because it has values with keys, we can access them using their keys instead of positions
 }
 
+// #######################################
 fn unit_like_struct() {
   struct Empty {};
   struct null;

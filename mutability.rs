@@ -20,6 +20,7 @@ fn main() {
   mutating_struct();
 }
 
+// #################################
 fn referncing_mut() {
   // you can also assign mutable refernce to other variable
   let mut x = 5;
@@ -30,6 +31,7 @@ fn referncing_mut() {
   println!("{}",y);
 }
 
+// ##################################
 fn reassigning_reference(){
   // but you can assign mutable refernce of y like this
   let mut x = 5;
@@ -37,6 +39,7 @@ fn reassigning_reference(){
   let z = &mut y;
 }
 
+// ##################################
 fn mutating_immutable_variable(){
   // immutable in rust doesn't mean it can't be changed, it is because of exterior mutability
 
@@ -51,6 +54,7 @@ fn mutating_immutable_variable(){
   // invoking clone will create new pointer to same value in heap
 }
 
+// ##################################
 fn interior_mutability() {
   use std::cell::RefCell;
   let x = RefCell::new(42);
@@ -59,6 +63,7 @@ fn interior_mutability() {
     println!("{:?}", y);
 }
 
+// ###################################
 fn mutating_struct() {
   use std::cell::Cell;
   // in structs you can't put some variables as mutable and some are not

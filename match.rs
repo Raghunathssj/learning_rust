@@ -31,6 +31,14 @@ fn main() {
   //different kind of patterns that can be used in match will be coverd in pattern.rs
 }
 
+
+fn matching_enums() {
+  let quit = Message::Quit;
+  process_message(quit);
+  let write = Message::Write("Hello".to_string());
+  process_message(write);
+}
+
 enum Message {
   Quit,
   ChangeColor(i32, i32, i32),
@@ -54,11 +62,4 @@ fn process_message(msg: Message) {
     Message::Move { x, y: new_name_for_y } => move_cursor(x, new_name_for_y),
     Message::Write(s) => println!("{}", s),
   };
-}
-
-fn matching_enums() {
-  let quit = Message::Quit;
-  process_message(quit);
-  let write = Message::Write("Hello".to_string());
-  process_message(write);
 }

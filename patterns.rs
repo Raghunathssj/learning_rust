@@ -41,6 +41,7 @@ fn main() {
   patterns_mix_and_match();
 }
 
+// #################################
 fn multiple_patterns() {
   let x = 1;
   let y = 2;
@@ -52,6 +53,7 @@ fn multiple_patterns() {
   }
 }
 
+// ##################################
 fn destructuring_patterns() {
   struct Point {
     x: i32,
@@ -76,6 +78,7 @@ fn destructuring_patterns() {
   }
 }
 
+// ####################################
 fn ignoring_bindings() {
   let some_value: Result<i32, &'static str> = Err("There was an error");
   // "_" using this you can ignore any type and value, it will be valid for every pattern that creates a binding
@@ -102,6 +105,7 @@ fn ignoring_bindings() {
   let _ = String::from("  hello  ").trim(); // here the string is directly dropping without binding
 }
 
+// ################################
 fn ref_and_ref_mut() {
   let x = 5;
   match x {
@@ -113,6 +117,7 @@ fn ref_and_ref_mut() {
   }
 }
 
+// #################################
 fn pattern_ranges() {
   let x = 3;
   match x {
@@ -129,6 +134,7 @@ fn pattern_ranges() {
   //Mostly ranges are used for intigers and characters
 }
 
+// #######################################
 fn pattern_bindings() {
   let x = 1;
   // you can bind a value using "@"
@@ -156,6 +162,7 @@ fn pattern_bindings() {
   }
 }
 
+// ###################################
 fn pattern_guards() {
   let x = 5;
   let b = true;
@@ -172,6 +179,7 @@ fn pattern_guards() {
   // if you are using if in multiple patterns it will apply on all patterns
 }
 
+// ##################################
 fn patterns_mix_and_match() {
   // like this you can also mix multiple patterns and use
   // match x {

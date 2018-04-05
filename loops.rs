@@ -32,6 +32,7 @@ fn main() {
   for_labels();
 }
 
+// ######################################
 fn for_enumerate() {
   for (index,value) in (0..5).enumerate() {
     println!("value at index {} is {}",index, value);
@@ -42,6 +43,7 @@ fn for_enumerate() {
   // }
 }
 
+// #######################################
 fn for_iterator() {
   let lines = "hello\nworld".lines();
   for (linenumber, line) in lines.enumerate() {
@@ -49,6 +51,7 @@ fn for_iterator() {
   }
 }
 
+// #######################################
 fn for_labels(){
   'outer: for x in 0..5 {
     'inner: for y in 0..5 {

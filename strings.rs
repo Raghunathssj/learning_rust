@@ -12,6 +12,7 @@ fn main() {
   strings();
 }
 
+// #######################################
 fn string_literals() {
   let string_slice = "string slice"; // it is same as declaring string_slice: &'static str
   // here "string slice" is string literal, which is a string slice that is statically allocated
@@ -29,6 +30,7 @@ fn string_literals() {
   // you can't access a str directly, you need to use &str because it is unsized variable
 }
 
+// #######################################
 fn strings() {
   //String can be commonly created using string slice with to_string function
   // Strings can join with str

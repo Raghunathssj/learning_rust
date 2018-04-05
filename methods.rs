@@ -45,6 +45,7 @@ fn main() {
   builder_pattern_method();
 }
 
+// ###########################################
 fn method_call() {
   let mut programmer = Programmer{name:"Raghu",age:19};
   println!("name is {}",programmer.get_name());
@@ -52,6 +53,7 @@ fn method_call() {
   println!("updated name is {}",programmer.update_name("Raghunath"));
 }
 
+// ############################################
 // you can chain the function calling like below
 fn chaining_method_calls() {
   let programmer = Programmer {name:"Raghu",age:19};
@@ -62,6 +64,7 @@ fn chaining_method_calls() {
   println!("changed name is {}",programmer1_name);
 }
 
+// ########################################
 fn associated_methods() {
   // you can also create a methods which won't take self argument like the new method in above struct
   let programmer = Programmer::new("Raghu",19);
@@ -69,6 +72,7 @@ fn associated_methods() {
   println!("{} is {} years old",programmer.get_name(),programmer.get_age());
 }
 
+// #########################################
 fn builder_pattern_method() {
   // here we created a struct with name Circle which has a method area in it
   struct Circle {
