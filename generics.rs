@@ -13,6 +13,7 @@ fn main() {
   standard_multiple_generics_option();
   generic_functions();
   generic_structs();
+  generic_vectors();
 }
 
 // #########################################
@@ -74,4 +75,12 @@ fn generic_structs() {
         std::mem::swap(&mut self.x, &mut self.y);
     }
   }
+}
+
+fn generic_vectors() {
+  let mut v = Vec::new();
+  // println!("{:?}", v); // This will give you an error because :? cannot resolve type of v
+  // If you use like this it will work
+  v.push(true); // This will make the type v as bool thats why the next line won't give error
+  println!("{:?}", v);
 }
