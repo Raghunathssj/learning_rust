@@ -1,3 +1,4 @@
+```rust
 #![allow(unused_variables)]
 
 fn diverges() -> ! {
@@ -7,3 +8,4 @@ fn diverges() -> ! {
 fn main() {
   diverges();
 }
+```
