@@ -13,12 +13,9 @@ fn description() {
 fn main() {
   description();
   example();
-  rules_for_implementing_traits();
   multiple_signatures_in_trait();
   trait_bounds_on_generic_functions();
   trait_bounds_on_generic_structs();
-  traits_for_int();
-  multiple_trait_bounds();
 }
 
 // #######################################
@@ -41,19 +38,6 @@ fn example() {
         std::f64::consts::PI * (self.radius * self.radius)
     }
   }
-}
-
-// #######################################
-fn rules_for_implementing_traits() {
-  // If a trait is not defined in your scope, it doesn't apply.
-  // Here is an example, where i am using Debug, which is provided by standard library of Rust
-  // fn single_argument_generic_function<T: Debug>(x:T) {
-  //   // some code......
-  // }
-  // To make the above code work
-  // We need to USE the trait first
-  // USE is same as import in java and C
-  // It makes safe of your code that, if someone makes something unnecessary things it won't effect your code
 }
 
 // #######################################
@@ -122,32 +106,4 @@ fn trait_bounds_on_generic_structs() {
   };
   println!("{:?}", r.is_square());
   // You can also use standard traits instead of HasArea for Circle but it need multiplication
-}
-
-// #######################################
-fn traits_for_int() {
-  trait IsSame {
-    fn is_same(&self, other: &Self) -> bool;
-  }
-  impl IsSame for i32 {
-    fn is_same(&self, other: &Self) -> bool {
-      self == other
-    }
-  }
-  println!("{}",3.is_same(&3));
-  println!("{}",3.is_same(&5));
-  // Like this you can make your own traits for any type.
-}
-
-// #######################################
-fn multiple_trait_bounds() {
-  //We are using single traits till now, what if we want to use more than one trait
-  //Then you can use "+" for that
-  use std::fmt::Debug;
-  // Clone is also standard trait
-  fn foo<T: Clone + Debug>(x: T) {
-    x.clone();
-    println!("{:?}", x);
-  }
-  foo(3);
 }
