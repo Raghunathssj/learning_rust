@@ -1,4 +1,5 @@
 #![allow(dead_code)]
+#![allow(unused_variables)]
 
 fn description() {
   // Traits are a way to tell compiler about a functionality that a type must implement
@@ -16,6 +17,9 @@ fn main() {
   multiple_signatures_in_trait();
   trait_bounds_on_generic_functions();
   trait_bounds_on_generic_structs();
+  traits_for_int();
+  multiple_trait_bounds();
+  where_clause_in_traits();
 }
 
 // #######################################
@@ -106,4 +110,77 @@ fn trait_bounds_on_generic_structs() {
   };
   println!("{:?}", r.is_square());
   // You can also use standard traits instead of HasArea for Circle but it need multiplication
+}
+
+// #######################################
+fn traits_for_int() {
+  trait IsSame {
+    fn is_same(&self, other: &Self) -> bool;
+  }
+  impl IsSame for i32 {
+    fn is_same(&self, other: &Self) -> bool {
+      self == other
+    }
+  }
+  println!("{}",3.is_same(&3));
+  println!("{}",3.is_same(&5));
+  // Like this you can make your own traits for any type.
+}
+
+// #######################################
+fn multiple_trait_bounds() {
+  //We are using single traits till now, what if we want to use more than one trait
+  //Then you can use "+" for that
+  use std::fmt::Debug;
+  // Clone is also standard trait
+  fn foo<T: Clone + Debug>(x: T) {
+    x.clone();
+    println!("{:?}", x);
+  }
+  foo(3);
+}
+
+// #######################################
+fn where_clause_in_traits() {
+  // If you want to use different traits for different types or same type of data that is taking it is possible and it seems like below
+  use std::fmt::Debug;
+  fn foo<T: Clone, K: Clone + Debug>(x: T, y: K) {
+    x.clone();
+    y.clone();
+    println!("{:?}", y);
+  }
+  // Here the type T using only Clone trait and type K is using Clone and Debug traits
+  // It seems that the function name and the parameters are at far distance and its is hard to see them to solve this Rust has "where clause"
+  fn bar<T, K>(x: T, y: K) where T: Clone, K: Clone + Debug {
+    // While using "where" we use the function syntax and use where after parameters
+    x.clone();
+    y.clone();
+    println!("{:?}", y);
+  }
+  // You can also break the line if the parameters or traits are more to increase readability
+  fn foo_bar<T,K>(x: T,y: K)
+    where T:Clone,
+          K: Clone + Debug {
+            // some code....
+  }
+
+
+  // Here is the another feature of "where" is, it allow bound to left side of it not only of type parameters
+  // Meaning, "where" bounds according to the position it not only bounds to the parameter type (above example)
+  trait ConvertTo<Output> {
+    fn convert(&self) -> Output;
+  }
+  impl ConvertTo<i64> for i32 {
+    fn convert(&self) -> i64 { *self as i64 }
+  }
+  // Can be called with T == i32.
+  fn convert_t_to_i64<T: ConvertTo<i64>>(x: T) -> i64 {
+    x.convert()
+  }
+  // Can be called with T == i64.
+  fn convert_i32_to_t<T>(x: i32) -> T
+        // This is using ConvertTo as if it were "ConvertTo<i64>".
+        where i32: ConvertTo<T> {
+    x.convert()
+  }
 }
