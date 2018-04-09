@@ -20,6 +20,8 @@ fn main() {
   traits_for_int();
   multiple_trait_bounds();
   where_clause_in_traits();
+  default_methods_in_traits();
+  overriding_default_methods_in_traits();
 }
 
 // #######################################
@@ -182,5 +184,37 @@ fn where_clause_in_traits() {
         // This is using ConvertTo as if it were "ConvertTo<i64>".
         where i32: ConvertTo<T> {
     x.convert()
+  }
+}
+
+// #######################################
+fn default_methods_in_traits() {
+  // In traits we can add define default method
+  trait EaqulExample {
+    fn are_equal(&self,other: &Self) -> bool;
+    fn are_not_equal(&self,other: &Self) -> bool {!self.are_equal(other)}
+  }
+  // In the above trait we have declared an default method, it won't force to create are_not_equal method while implementing this trait
+  impl EaqulExample for i32 {
+    fn are_equal(&self, other: &Self) -> bool {
+      self == other
+    }
+  }
+  // The above implementation won't give any compilation error
+}
+
+// #######################################
+fn overriding_default_methods_in_traits() {
+  trait EaqulExample {
+    fn are_equal(&self,other: &Self) -> bool;
+    fn are_not_equal(&self,other: &Self) -> bool {!self.are_equal(other)}
+  }
+  impl EaqulExample for i32 {
+    fn are_equal(&self, other: &Self) -> bool {
+      self == other
+    }
+    fn are_not_equal(&self,other: &Self) -> bool {
+      self != other
+    }
   }
 }
