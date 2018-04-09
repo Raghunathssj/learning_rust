@@ -23,6 +23,7 @@ fn main() {
   default_methods_in_traits();
   overriding_default_methods_in_traits();
   inheritance();
+  deriving_traits();
 }
 
 // #######################################
@@ -223,6 +224,7 @@ fn overriding_default_methods_in_traits() {
   }
 }
 
+// #######################################
 fn inheritance() {
   trait Ex {
     fn something();
@@ -249,4 +251,16 @@ fn inheritance() {
   */
   // If you try to implement like the above code compiler will throw error
   // It will say something method is not belongs to this trait
+}
+
+// #######################################
+fn deriving_traits() {
+  // implementing standard traits repeatedly makes you frustated
+  // That's why Rust introduced #[derive(Trait)] use any standard trait to derive it automatically
+  #[derive(Debug)]
+  // Here we are using derive in Foo for Debug because a struct can't be debugged directly using :?
+  struct Foo;
+  fn main() {
+    println!("{:?}", Foo);
+  }
 }
