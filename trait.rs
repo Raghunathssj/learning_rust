@@ -22,6 +22,7 @@ fn main() {
   where_clause_in_traits();
   default_methods_in_traits();
   overriding_default_methods_in_traits();
+  inheritance();
 }
 
 // #######################################
@@ -61,10 +62,12 @@ fn multiple_signatures_in_trait() {
 
 // #######################################
 fn trait_bounds_on_generic_functions() {
-  /* If you use a generic function it may complains because it cannot find scope of the methods that are using in the generic function like area() in below example
+  // If you use a generic function it may complains because it cannot find scope of the methods that are using in the generic function like area() in below example
+  /*
   fn print_area<T>(shape: T) {
     println!("This shape has an area of {}", shape.area());
-  }*/
+  }
+  */
   // Here T can be any type and we don't know that, the type may implement area method or not.
   trait HasArea {
     fn area(&self) -> f64;
@@ -216,5 +219,34 @@ fn overriding_default_methods_in_traits() {
     fn are_not_equal(&self,other: &Self) -> bool {
       self != other
     }
+    // Here we are overriding the default method
   }
+}
+
+fn inheritance() {
+  trait Ex {
+    fn something();
+  }
+  trait Example : Ex {
+    fn some();
+  }
+  // Here we are inheriting Ex to Example
+  // That means who ever implements Example should implement Ex also
+  struct Foo;
+  impl Ex for Foo {
+    fn something() {println!("something");}
+  }
+  impl Example for Foo {
+    fn some() {println!("some",);}
+  }
+  // You can't implement two traits at a time
+  // Even though the traits are inherited you need to implement them seperately
+  /*
+  impl Example for Foo{
+    fn something() {println!("something");}
+    fn some() {println!("some",);}
+  }
+  */
+  // If you try to implement like the above code compiler will throw error
+  // It will say something method is not belongs to this trait
 }
