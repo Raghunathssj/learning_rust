@@ -255,8 +255,19 @@ fn inheritance() {
 
 // #######################################
 fn deriving_traits() {
-  // implementing standard traits repeatedly makes you frustated
-  // That's why Rust introduced #[derive(Trait)] use any standard trait to derive it automatically
+  // implementing standard traits repeatedly makes you frustated.
+  // That's why Rust introduced #[derive(Trait)] to use below traits to include it automatically
+  /*
+  Clone
+  Copy
+  Debug
+  Default
+  Eq
+  Hash
+  Ord
+  PartialEq
+  PartialOrd
+  */
   #[derive(Debug)]
   // Here we are using derive in Foo for Debug because a struct can't be debugged directly using :?
   struct Foo;
