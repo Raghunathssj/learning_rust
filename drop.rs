@@ -14,6 +14,9 @@ fn description() {
   // drop function takes mutable reference as parameter
   // This function will call automatically when the variable that is declared using the strucyt that implemented Drop trait goes out of scope
   // You can call the function by user self directly(drop(variable))
+  // Values are dropped in reverse order of declaration
+  // It works on LIFO(Last In First Out)
+  // It is useful to clean up any resources that associated with struct
 }
 
 
@@ -21,6 +24,7 @@ fn main() {
   description();
   auto_dropping();
   manual_dropping();
+  dropping_multiple();
 }
 
 // #####################################
@@ -39,4 +43,10 @@ fn manual_dropping() {
   // If you are dropping manually by passing reference of variable it won't drop the variable it will be available till it goes out of scope
   // Same with mutable reference also
   println!("{}", y.name);
+}
+
+// #####################################
+fn dropping_multiple() {
+  let first = DropExample{name:"first"}; // This will drop second
+  let second = DropExample{name:"second"}; // This will drop first
 }
