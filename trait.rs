@@ -257,6 +257,7 @@ fn inheritance() {
 fn deriving_traits() {
   // implementing standard traits repeatedly makes you frustated.
   // That's why Rust introduced #[derive(Trait)] to use below traits to include it automatically
+  // If you want to derive more than one traits of below seperate them by "," in  parentheses
   /*
   Clone
   Copy
